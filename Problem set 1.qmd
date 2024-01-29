@@ -1,0 +1,91 @@
+---
+title: "Qudratic Equation Lesson"
+format: pdf
+editor: visual
+---
+
+# Quadratic Equation Lesson
+
+In this lesson, we will explore how to apply the quadratic equation and graphically demonstrate the correctness of the solution.
+
+~strikethrough~
+
+`code`
+
+## Images
+
+![First week of data science](https://datasciencedojo.com/wp-content/uploads/11-1.jpg)
+
+The image can also be a local file.
+
+## Define variables
+
+-   We'll use **d** instead of `c` to avoid conflicts with the reserved function name in R.
+
+\[ a = 1, \quad b = -1, \quad d = -2 \]
+
+## Quadratic Equation
+
+The quadratic equation is given by:
+
+$f(x) = ax^2 + b + d = 0$
+
+Let's calculte the solutions to this equation.
+
+```{r}
+### Define the quadratic equation coefficients
+a <- 1
+b <- -1
+d <- -2
+
+### Calculate the discriminant
+discriminant <- b^2 - 4*a*d
+
+### Check if the discriminant is non-negative (real solutions)
+if (discriminant >= 0) {
+  # Calculate the solutions
+  x1 <- (-b + sqrt(discriminant)) / (2*a)
+  x2 <- (-b - sqrt(discriminant)) / (2*a)
+
+# Print the solutions
+  cat("Solutions: x1 =", x1, ", x2 =", x2, "\n")
+} else {
+  cat("The quadratic equation has no real solutions.\n")
+}
+
+
+```
+
+## Graph
+
+```{r}
+# Generate x values for plotting the quadratic function
+x_values <- seq(x1 - 2, x2 + 2, length.out = 400)
+y_values <- a * x_values^2 + b * x_values + d
+
+# Plot the quadratic function
+plot(x_values, y_values, type = "l", col = "blue", lwd = 2, main = "Quadratic Equation Graph",
+     xlab = "x", ylab = "f(x)", ylim = c(min(y_values) - 2, max(y_values) + 2))
+grid()
+
+```
+
+By default, the code will show up as well. To avoid having the code show up, you can use an argument, which are annotated with `|#` To avoid showing code in the final document, you can use the argument `echo: FALSE`. For example:
+
+```{r}
+#| echo: false
+
+x <- 1
+y <- 2
+x + y
+```
+
+We recommend getting into the habit of adding a label to the R code chunks. This will be very useful when debugging, among other situations. You do this by adding a descriptive word like this:
+
+```{r}
+#| label: one-plus-two
+
+x <- 1
+y <- 2
+x + y
+```

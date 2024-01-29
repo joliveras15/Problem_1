@@ -1,0 +1,61 @@
+---
+title: "Qudratic Equation Lesson"
+format: pdf
+---
+
+# Quadratic Equation Lesson
+
+In this lesson, we will explore how to apply the quadratic equation and graphically demonstrate the correctness of the solution.
+
+## Define variables
+
+-   We'll use **d** instead of `c` to avoid conflicts with the reserved function name in R.
+
+\[ a = 1, b = 3, d = 2 \]
+
+## Quadratic Equation
+
+The quadratic equation is given by:
+
+$f(x) = ax^2 + b + d = 0$
+
+Let's calculte the solutions to this equation.
+
+```{r}
+# Define the quadratic equation coefficients
+a <- 1
+b <- 3
+d <- 2
+
+# Calculate the discriminant
+discriminant <- b^2 - 4*a*d
+
+# Check if the discriminant is non-negative (real solutions)
+if (discriminant >= 0) {
+  # Calculate the solutions
+  x1 <- (-b + sqrt(discriminant)) / (2*a)
+  x2 <- (-b - sqrt(discriminant)) / (2*a)
+
+# Print the solutions
+  cat("Solutions: x1 =", x1, ", x2 =", x2, "\n")
+} else {
+  cat("The quadratic equation has no real solutions.\n")
+}
+
+
+```
+
+## Graph
+
+```{r}
+# Generate x values for plotting the quadratic function
+x_values <- seq(-3, 3, length.out = 100)
+y_values <- a * x_values^2 + b * x_values + d
+
+# Plot the quadratic function
+plot(x_values, y_values, type = "l", col = "blue", lwd = 2, main = "Quadratic Equation Graph",
+     xlab = "x", ylab = "f(x)", ylim = c(min(y_values) - 2, max(y_values) + 2))
+grid()
+
+
+```

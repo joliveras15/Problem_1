@@ -1,0 +1,7 @@
+"0","# Generate x values for plotting the quadratic function"
+"0","x_values <- seq(x1 - 2, x2 + 2, length.out = 400)"
+"0","y_values <- a * x_values^2 + b * x_values + d"
+"0",""
+"0","# Plot the quadratic function"
+"0","plot(x_values, y_values, type = ""l"", col = ""blue"", lwd = 2, main = ""Quadratic Equation Graph"","
+"0","     xlab = ""x"", ylab = ""f(x)"", ylim = c(min(y_values) - 2, max(y_values) + 2))"
